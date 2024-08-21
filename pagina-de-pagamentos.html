@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-group input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .form-group input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .payment-methods {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 15px;
+        }
+        .payment-methods img {
+            max-width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Informações de Pagamento</h2>
+        <form action="/processar-pagamento" method="post">
+            <!-- Informações do Cartão -->
+            <div class="form-group">
+                <label for="card-name">Nome no Cartão</label>
+                <input type="text" id="card-name" name="card-name" required>
+            </div>
+            <div class="form-group">
+                <label for="card-number">Número do Cartão</label>
+                <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456" required>
+            </div>
+            <div class="form-group">
+                <label for="card-expiry">Data de Validade</label>
+                <input type="text" id="card-expiry" name="card-expiry" placeholder="MM/AA" required>
+            </div>
+            <div class="form-group">
+                <label for="card-cvc">Código de Segurança (CVC)</label>
+                <input type="text" id="card-cvc" name="card-cvc" placeholder="123" required>
+            </div>
+
+            <!-- Endereço de Cobrança -->
+            <div class="form-group">
+                <label for="billing-address">Endereço de Cobrança</label>
+                <input type="text" id="billing-address" name="billing-address" required>
+            </div>
+            <div class="form-group">
+                <label for="billing-city">Cidade</label>
+                <input type="text" id="billing-city" name="billing-city" required>
+            </div>
+            <div class="form-group">
+                <label for="billing-state">Estado</label>
+                <select id="billing-state" name="billing-state" required>
+                    <option value="">Selecione um estado</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="MG">Minas Gerais</option>
+                    <!-- Adicione outros estados conforme necessário -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="billing-zip">CEP</label>
+                <input type="text" id="billing-zip" name="billing-zip" required>
+            </div>
+
+            <!-- Métodos de Pagamento -->
+            <div class="payment-methods">
+                <img src="visa.png" alt="Visa">
+                <img src="mastercard.png" alt="MasterCard">
+                <img src="amex.png" alt="American Express">
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Pagar Agora">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
